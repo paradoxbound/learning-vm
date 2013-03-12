@@ -29,6 +29,7 @@ define runit::process(
     "$servicedir/run":
       ensure => $ensure_file,
       require => [ File["$servicedir/log/run"], File["$logdir"] ],
+      notify => Exec["restart $servicedir"],
       mode => 0755,
       content => template("runit/run.sh.erb");
     "$servicedir/log":
@@ -55,6 +56,9 @@ define runit::process(
   }
 
   exec {
+    "restart $servicedir":
+      command => "/usr/bin/sv restart $servicedir",
+      refreshonly => true;
     "restart $servicedir/log":
       command => "/usr/bin/sv restart $servicedir/log",
       refreshonly => true;
