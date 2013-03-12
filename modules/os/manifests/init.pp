@@ -1,4 +1,8 @@
 class os {
+  package {
+    "g++": ensure => latest;
+  }
+
   file {
     "/etc/security/limits.conf":
       ensure => file,
