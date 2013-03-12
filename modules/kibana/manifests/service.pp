@@ -10,14 +10,15 @@ class kibana::service {
     "kibana":
       ensure => present,
       user => "kibana",
-      require => Class["kibana::package"],
-      #command => "env KIBANA_CONFIG=/app/kibana/kibana.conf ruby kibana.rb",
-      command => "ruby kibana.rb",
+      require => [Class["kibana::package"], Rvm::Install["for kibana"], File["/app/kibana/kibana_conf.rb"]],
+      command => "env KIBANA_CONFIG=/app/kibana/kibana_conf.rb ruby kibana.rb",
       directory => "/app/kibana/kibana";
   }
 
+  notice("OK")
+
   file {
-    "/app/kibana/kibana/KibanaConfig.rb":
+    "/app/kibana/kibana_conf.rb":
       ensure => file,
       require => Class["kibana::package"],
       notify => Runit::Process["kibana"],
