@@ -15,8 +15,6 @@ class kibana::service {
       directory => "/app/kibana/kibana";
   }
 
-  notice("OK")
-
   file {
     "/app/kibana/kibana_conf.rb":
       ensure => file,
