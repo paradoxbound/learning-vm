@@ -8,6 +8,8 @@ class runit::package {
   }
 
   file {
+    "/etc/service":
+      ensure => directory;
     "/service":
       ensure => link,
       target => "/etc/service";
