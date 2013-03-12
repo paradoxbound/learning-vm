@@ -5,5 +5,8 @@ class os {
       owner => root,
       group => root,
       source => "puppet:///modules/os/limits.conf";
+    "/etc/motd":
+      ensure => file,
+      content => template("os/motd.erb");
   }
 }
