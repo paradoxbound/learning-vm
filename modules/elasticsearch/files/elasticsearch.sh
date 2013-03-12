@@ -13,5 +13,5 @@ if [ ! -d "elasticsearch-${version}" ] ; then
 fi
 
 cd elasticsearch-${version}
-exec sh bin/elasticsearch.sh -f
+exec sh bin/elasticsearch -f
 
