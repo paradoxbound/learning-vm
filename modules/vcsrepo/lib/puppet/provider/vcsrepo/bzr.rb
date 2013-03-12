@@ -4,7 +4,6 @@ Puppet::Type.type(:vcsrepo).provide(:bzr, :parent => Puppet::Provider::Vcsrepo) 
   desc "Supports Bazaar repositories"
 
   optional_commands   :bzr => 'bzr'
-  defaultfor :bzr => :exists
   has_features :reference_tracking
 
   def create
@@ -26,7 +25,7 @@ Puppet::Type.type(:vcsrepo).provide(:bzr, :parent => Puppet::Provider::Vcsrepo) 
   def destroy
     FileUtils.rm_rf(@resource.value(:path))
   end
-  
+
   def revision
     at_path do
       current_revid = bzr('version-info')[/^revision-id:\s+(\S+)/, 1]

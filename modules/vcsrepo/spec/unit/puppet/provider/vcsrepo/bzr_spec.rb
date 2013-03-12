@@ -1,4 +1,4 @@
-require 'pathname'; Pathname.new(__FILE__).realpath.ascend { |x| begin; require (x + 'spec_helper.rb'); break; rescue LoadError; end }
+require 'spec_helper'
 
 describe_provider :vcsrepo, :bzr, :resource => {:path => '/tmp/vcsrepo'} do
 
@@ -78,11 +78,11 @@ describe_provider :vcsrepo, :bzr, :resource => {:path => '/tmp/vcsrepo'} do
       end
     end
   end
-  
+
   describe "setting the revision property" do
     it "should use 'bzr update -r' with the revision" do
       revision = 'somerev'
-      provider.expects('bzr').with('update', '-r', revision, resource.value(:path))
+      provider.expects(:bzr).with('update', '-r', revision, resource.value(:path))
       provider.revision = revision
     end
   end
