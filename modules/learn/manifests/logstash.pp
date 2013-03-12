@@ -1,4 +1,5 @@
 class learn::logstash {
+  include java
   include elasticsearch
 
   user::app { "logstash": ; }
