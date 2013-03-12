@@ -1,6 +1,7 @@
 class learn::logstash {
   include java
   include elasticsearch
+  include kibana
 
   user::app { "logstash": ; }
 
