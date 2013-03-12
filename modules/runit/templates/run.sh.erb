@@ -13,6 +13,9 @@ rvm="\${HOME}/.rvm/scripts/rvm"
 echo "Loading RVM"
 [ -f "\$rvm" ] && . "\$rvm"
 
+# Hardcode 1.9.3 because ruby 2.0.0 is not ready.
+rvm use 1.9.3 || rvm install 1.9.3
+
 cd <%= directory %>
 if [ -f "Gemfile" ] ; then
   bundle install

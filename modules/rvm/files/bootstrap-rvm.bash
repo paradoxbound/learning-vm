@@ -19,8 +19,5 @@ export HOME
 
 rvm="${HOME}/.rvm/scripts/rvm"
 if [ ! -f "$rvm" ] ; then
-  curl -L https://get.rvm.io | bash -s stable --ruby
-#else
-  #. "$rvm"
-  #rvm get $branch
+  curl -L https://get.rvm.io | bash -s stable
 fi
