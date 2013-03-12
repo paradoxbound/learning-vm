@@ -1,4 +1,5 @@
 class kibana::package {
+  include git
   user::app { "kibana": ; }
 
   package {
@@ -9,10 +10,10 @@ class kibana::package {
   vcsrepo {
     "/app/kibana/kibana":
       ensure => latest,
-      require => User::App["statsd"],
+      require => User::App["kibana"],
       owner => "kibana",
       provider => "git",
       revision => "kibana-ruby",
-      source => "https://github.com/jordansissel/Kibana"
+      source => "https://github.com/rashidkpc/Kibana"
   }
 }
