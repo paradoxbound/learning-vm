@@ -38,7 +38,7 @@ After you've started, you should be able to direct your browser at
 
 You can send logs to logstash by pushing them over tcp port 5001. For example:
 
-    echo "Hello world!" | telnet localhost 5601
+    echo "Hello world!" | telnet localhost 5001
 
 If you want to play with the logstash configuration, you can do the following:
 
